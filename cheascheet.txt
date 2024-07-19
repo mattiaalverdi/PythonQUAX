@@ -1,0 +1,31 @@
+// DECODE OF IVC1 PUMP STATUS 
+// 
+
+#IVC1.AL := #ALLARM;
+#IVC1.START := #START;
+
+IF NOT #OK THEN
+    #IVC1.OKmsg := #OKstring;
+    #IVC1.Status := 7000;
+ELSE
+    #IVC1.OKmsg := #NOTOKstring;
+    #IVC1.Status := 6000;
+END_IF;
+#IVC1.OK := NOT #OK;
+
+IF #ALLARM THEN
+    #IVC1.ALmsg := #Alstring;
+    #IVC1.Status := #IVC1.Status + 606;
+ELSE
+    #IVC1.ALmsg := #NOTAlstring;
+END_IF;
+#IVC1.WA := #WARNING;
+
+// SE START -->1 CHIUDERE UN RELE' CHE PORTA A MASSA IL PIN2 
+
+
+
+
+
+
+        

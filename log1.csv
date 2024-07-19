@@ -1,0 +1,350 @@
+LOG of 19/07/2024:09:57
+Pump IVC1
+  Start: Low
+  OK: High
+  Warning: Low
+  Alarm: Low
+Pump IVC2
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP1
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP2
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+Pump EMOD1
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+CryCon 18i
+ChA: 0.000e+00 K
+ChB: 0.000e+00 K
+ChC: 3.098 e^2 K
+ChD: 2.943 e^2 K
+ChD: 0.000e+00 K
+ChE: 3.387 e^2 K
+ChF: 0.000e+00 K
+ChG: 0.000e+00 K
+ChH: 9.495 e^2 K
+Pfeiffer MaxiGauge
+Gauge1: 9.495 e^2 mbar
+Gauge2: 1.290 e^1 mbar
+Gauge3: 2.300 e^1 mbar
+Gauge4: 1.400 e^-1 mbar
+Gauge5: 1.957 e^-2 mbar
+Gauge6: 1.047 e^0 mbar
+Pfeiffer SingleGauge
+Gauge1: 0.000e+00 mbar
+Gauge2: 0.000e+00 mbar
+Helium Depth Indicator
+Channel: B
+Read: 9.112 e^-41 mm
+Channel: Lecture 
+LOG of 19/07/2024:09:59
+Pump IVC1
+  Start: Low
+  OK: High
+  Warning: Low
+  Alarm: Low
+Pump IVC2
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP1
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP2
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+Pump EMOD1
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+CryCon 18i
+ChA: 0.000e+00 K
+ChB: 0.000e+00 K
+ChC: 3.099 e^2 K
+ChD: 2.943 e^2 K
+ChD: 0.000e+00 K
+ChE: 3.395 e^2 K
+ChF: 0.000e+00 K
+ChG: 0.000e+00 K
+ChH: 9.495 e^2 K
+Pfeiffer MaxiGauge
+Gauge1: 9.495 e^2 mbar
+Gauge2: 1.290 e^1 mbar
+Gauge3: 2.300 e^1 mbar
+Gauge4: 1.400 e^-1 mbar
+Gauge5: 1.756 e^-2 mbar
+Gauge6: 1.049 e^0 mbar
+Pfeiffer SingleGauge
+Gauge1: 0.000e+00 mbar
+Gauge2: 0.000e+00 mbar
+Helium Depth Indicator
+Channel: B
+Read: 9.112 e^-41 mm
+Channel: Lecture 
+LOG of 19/07/2024:09:59
+Pump IVC1
+  Start: Low
+  OK: High
+  Warning: Low
+  Alarm: Low
+Pump IVC2
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP1
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP2
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+Pump EMOD1
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+CryCon 18i
+ChA: 0.000e+00 K
+ChB: 0.000e+00 K
+ChC: 3.099 e^2 K
+ChD: 2.943 e^2 K
+ChD: 0.000e+00 K
+ChE: 3.395 e^2 K
+ChF: 0.000e+00 K
+ChG: 0.000e+00 K
+ChH: 9.482 e^2 K
+Pfeiffer MaxiGauge
+Gauge1: 9.482 e^2 mbar
+Gauge2: 1.290 e^1 mbar
+Gauge3: 2.300 e^1 mbar
+Gauge4: 1.400 e^-1 mbar
+Gauge5: 1.745 e^-2 mbar
+Gauge6: 1.049 e^0 mbar
+Pfeiffer SingleGauge
+Gauge1: 0.000e+00 mbar
+Gauge2: 0.000e+00 mbar
+Helium Depth Indicator
+Channel: B
+Read: 9.112 e^-41 mm
+Channel: Lecture 
+LOG of 19/07/2024:09:59
+Pump IVC1
+  Start: Low
+  OK: High
+  Warning: Low
+  Alarm: Low
+Pump IVC2
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP1
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP2
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+Pump EMOD1
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+CryCon 18i
+ChA: 0.000e+00 K
+ChB: 0.000e+00 K
+ChC: 3.099 e^2 K
+ChD: 2.943 e^2 K
+ChD: 0.000e+00 K
+ChE: 3.394 e^2 K
+ChF: 0.000e+00 K
+ChG: 0.000e+00 K
+ChH: 9.489 e^2 K
+Pfeiffer MaxiGauge
+Gauge1: 9.489 e^2 mbar
+Gauge2: 1.290 e^1 mbar
+Gauge3: 2.300 e^1 mbar
+Gauge4: 1.400 e^-1 mbar
+Gauge5: 1.728 e^-2 mbar
+Gauge6: 1.049 e^0 mbar
+Pfeiffer SingleGauge
+Gauge1: 0.000e+00 mbar
+Gauge2: 0.000e+00 mbar
+Helium Depth Indicator
+Channel: B
+Read: 9.112 e^-41 mm
+Channel: Lecture 
+LOG of 19/07/2024:10:00
+Pump IVC1
+  Start: Low
+  OK: High
+  Warning: Low
+  Alarm: Low
+Pump IVC2
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP1
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP2
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+Pump EMOD1
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+CryCon 18i
+ChA: 0.000e+00 K
+ChB: 0.000e+00 K
+ChC: 3.099 e^2 K
+ChD: 2.944 e^2 K
+ChD: 0.000e+00 K
+ChE: 3.392 e^2 K
+ChF: 0.000e+00 K
+ChG: 0.000e+00 K
+ChH: 9.489 e^2 K
+Pfeiffer MaxiGauge
+Gauge1: 9.489 e^2 mbar
+Gauge2: 1.290 e^1 mbar
+Gauge3: 2.310 e^1 mbar
+Gauge4: 1.400 e^-1 mbar
+Gauge5: 1.718 e^-2 mbar
+Gauge6: 1.047 e^0 mbar
+Pfeiffer SingleGauge
+Gauge1: 0.000e+00 mbar
+Gauge2: 0.000e+00 mbar
+Helium Depth Indicator
+Channel: B
+Read: 9.112 e^-41 mm
+Channel: Lecture 
+LOG of 19/07/2024:10:00
+Pump IVC1
+  Start: Low
+  OK: High
+  Warning: Low
+  Alarm: Low
+Pump IVC2
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP1
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP2
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+Pump EMOD1
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+CryCon 18i
+ChA: 0.000e+00 K
+ChB: 0.000e+00 K
+ChC: 3.100 e^2 K
+ChD: 2.944 e^2 K
+ChD: 0.000e+00 K
+ChE: 3.392 e^2 K
+ChF: 0.000e+00 K
+ChG: 0.000e+00 K
+ChH: 9.489 e^2 K
+Pfeiffer MaxiGauge
+Gauge1: 9.489 e^2 mbar
+Gauge2: 1.290 e^1 mbar
+Gauge3: 2.300 e^1 mbar
+Gauge4: 1.300 e^-1 mbar
+Gauge5: 1.708 e^-2 mbar
+Gauge6: 1.050 e^0 mbar
+Pfeiffer SingleGauge
+Gauge1: 0.000e+00 mbar
+Gauge2: 0.000e+00 mbar
+Helium Depth Indicator
+Channel: B
+Read: 9.112 e^-41 mm
+Channel: Lecture 
+LOG of 19/07/2024:10:00
+Pump IVC1
+  Start: Low
+  OK: High
+  Warning: Low
+  Alarm: Low
+Pump IVC2
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP1
+  Start: Low
+  OK: Low
+  Warning: Low
+  Alarm: Low
+Pump 1KP2
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+Pump EMOD1
+  Start: Low
+  OK: Low
+  Warning: High
+  Alarm: High
+CryCon 18i
+ChA: 0.000e+00 K
+ChB: 0.000e+00 K
+ChC: 3.100 e^2 K
+ChD: 2.944 e^2 K
+ChD: 0.000e+00 K
+ChE: 3.392 e^2 K
+ChF: 0.000e+00 K
+ChG: 0.000e+00 K
+ChH: 9.495 e^2 K
+Pfeiffer MaxiGauge
+Gauge1: 9.495 e^2 mbar
+Gauge2: 1.290 e^1 mbar
+Gauge3: 2.300 e^1 mbar
+Gauge4: 1.400 e^-1 mbar
+Gauge5: 1.691 e^-2 mbar
+Gauge6: 1.047 e^0 mbar
+Pfeiffer SingleGauge
+Gauge1: 0.000e+00 mbar
+Gauge2: 0.000e+00 mbar
+Helium Depth Indicator
+Channel: B
+Read: 9.112 e^-41 mm
+Channel: Lecture 
