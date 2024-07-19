@@ -5,7 +5,7 @@ class Thresholds:
 
         :param alarm_thresholds: Lista di soglie float per gli allarmi.
         :param warning_thresholds: Lista di soglie float per gli avvisi.
-        """#zao
+        """
         # Se non vengono forniti valori, inizializza gli array a liste vuote
         self.alarm_thresholds = alarm_thresholds if alarm_thresholds is not None else []
         self.warning_thresholds = warning_thresholds if warning_thresholds is not None else []
