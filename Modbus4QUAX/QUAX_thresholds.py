@@ -39,5 +39,5 @@ PSGThresholds.set_alarm_thresholds([50.0, 50.0])   #"Gauge1", "Gauge2"
 PSGThresholds.set_warning_thresholds([100.0, 100.0])   #"Gauge1", "Gauge2"
 
 HDIThresholds = Thresholds()
-HDIThresholds.set_alarm_thresholds([1300])   #"HDI"
-HDIThresholds.set_warning_thresholds([1500])   #"HDI"
+HDIThresholds.set_alarm_thresholds([1300.0])   #"HDI"
+HDIThresholds.set_warning_thresholds([1500.0])   #"HDI"
