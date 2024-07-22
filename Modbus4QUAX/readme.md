@@ -1,9 +1,34 @@
 QUAX MODBUS COMUNICATION
 
-In this project we can dialog with the QUAX's PLC in the automation Rack
+In this project we can dialog with the QUAX's PLC in the automation Rack 
+
+We can divide the work in more than one function, in particular we have:
+- main
+- Functions
+- thresholds_class
+- QUAX_thresholds
+- mailSender
+- QUAX_bot
+- bot.json
+
+---------------------------------------------------------------------------------------------------
+main
+in this file we can find the main logic behind the various type of comunication with the PLC
+Here we import all the other files as:
+- Functions: where we define the modbus client of the PLC modbus server and the decode functions of a holding register where datas are stored by PLC server
+- Thresholdd_class: where we define the class for alarm and warning configuration, also we define the comparison function
+- QUAX_thresholds: in this file there is the main configuration for the QUAX alarms and warnings
 
 
+---------------------------------------------------------------------------------------------------
+- mailSender: application that send an email
 
+---------------------------------------------------------------------------------------------------
+BOT TELEGRAM
+- QUAX_bot
+
+
+- bot.json
 where:
 
 -bot_token: is the Telegram Bot access token, to be generated with @BotFather on a Telegram client.
