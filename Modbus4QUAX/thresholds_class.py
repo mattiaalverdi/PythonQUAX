@@ -1,15 +1,13 @@
+#----------------------------------------------------------------------------------------------------------------
+# CLASS DEFINITION
 class Thresholds:
-    def __init__(self, alarm_thresholds=None, warning_thresholds=None):
+    def __init__(self):
         """
-        Inizializza l'oggetto Thresholds con le soglie per allarmi e avvisi.
+        Inizializza l'oggetto Thresholds con array vuoti per le soglie di allarme e avviso.
+        """
+        self.alarm_thresholds = []
+        self.warning_thresholds = []
 
-        :param alarm_thresholds: Lista di soglie float per gli allarmi.
-        :param warning_thresholds: Lista di soglie float per gli avvisi.
-        """
-        # Se non vengono forniti valori, inizializza gli array a liste vuote
-        self.alarm_thresholds = alarm_thresholds if alarm_thresholds is not None else []
-        self.warning_thresholds = warning_thresholds if warning_thresholds is not None else []
-    
     def set_alarm_thresholds(self, thresholds):
         """
         Imposta le soglie per gli allarmi.
@@ -32,6 +30,22 @@ class Thresholds:
         else:
             raise ValueError("Tutti i valori devono essere float")
         
+    def get_alarm_thresholds(self):
+        """
+        Restituisce le soglie di allarme.
+
+        :return: Lista di soglie di allarme.
+        """
+        return self.alarm_thresholds
+    
+    def get_warning_thresholds(self):
+        """
+        Restituisce le soglie di avviso.
+
+        :return: Lista di soglie di avviso.
+        """
+        return self.warning_thresholds
+
     def get_alarm_at(self, position):
         """
         Restituisce la soglia di allarme alla posizione specificata.
@@ -69,53 +83,6 @@ class Thresholds:
         print("Warning Thresholds:")
         for i, threshold in enumerate(self.warning_thresholds):
             print(f"  Warning {i+1}: {threshold:.2f}")
-
-#----------------------------------------------------------------------------------------------------------------
-# # Esempio di utilizzo della classe
-if __name__ == "__main__":
-    # Crea un'istanza della classe con soglie iniziali
-    thresholds = Thresholds(
-        alarm_thresholds=[1.23, 2.34, 3.45],
-        warning_thresholds=[4.56, 5.67]
-    )
-    
-    thresholds.print_thresholds()
-
-    # Modifica le soglie
-    thresholds.set_alarm_thresholds([1.50, 2.60, 3.70])
-    thresholds.set_warning_thresholds([4.80, 5.90, 6.00])
-
-    # Stampa le soglie
-    thresholds.print_thresholds()
-
-    # Leggi la soglia di avviso alla posizione 2
-    warning_value_at_pos_2 = thresholds.get_warning_at(2)
-    
-    if warning_value_at_pos_2 is not None:
-        print(f"Warning value at position 2: {warning_value_at_pos_2:.2f}")
-    else:
-        print("La posizione specificata è fuori intervallo.")
-
-#----------------------------------------------------------------------------------------------------------------
-# CONFIGURAZIONE DELLE SOGLIE DI ALLARME E AVVISO QUAX
-        """
-        Ricordarsi che i valori impostati non vengono impostati nel PLC,
-        pertanto possono essere diversi dalle effettive soglie di intervento
-
-        la struttura dei dati delle soglie deve essere concorde all'ordine
-        di rappresentazione dei dati nelle strutture di memoria e decodifica
-        sono riportate di seguito:  (versione 1.0)
-        PumpsHeader = ["IVC1", "IVC2", "1KP1", "1KP2", "EMOD1"]
-        CCiHeader = ["ChA", "ChB", "ChC", "ChD", "ChE", "ChF", "ChG", "ChH"]
-        PMGHeader = ["Gauge1", "Gauge2", "Gauge3", "Gauge4", "Gauge5", "Gauge6"]
-        PSGHeader = ["Gauge1", "Gauge2"]
-        """
- 
-# PMG_thresholds = Thresholds(
-#         alarm_thresholds=[1.23, 2.34, 3.45],
-#         warning_thresholds=[4.56, 5.67]
-# )
-
 
 def check_values_against_thresholds(values, thresholds, threshold_type='alarm'):
     """
@@ -155,23 +122,27 @@ def check_values_against_thresholds(values, thresholds, threshold_type='alarm'):
     except Exception as e:
         print(f"Errore: {e}")
         return 66
-
-# Esempio di utilizzo della funzione
+    
+#----------------------------------------------------------------------------------------------------------------
+# TEST of the CLASS functionality
 if __name__ == "__main__":
-    # Crea un'istanza della classe Thresholds con soglie di esempio
-    thresholds = Thresholds(
-        alarm_thresholds=[10.0, 20.0, 30.0],
-        warning_thresholds=[5.0, 15.0]
-    )
+    # Crea un'istanza della classe Thresholds
+    thresholds = Thresholds()
 
-    # Array di valori da verificare
-    values = [9.0, 21.0, 29.0]
+    # Imposta le soglie
+    thresholds.set_alarm_thresholds([10.0, 20.0, 30.0])
+    thresholds.set_warning_thresholds([5.0, 15.0])
 
-    # Verifica i valori rispetto alle soglie di allarme
-    result_alarm = check_values_against_thresholds(values, thresholds, 'alarm')
-    print(f"Result (Alarm): {result_alarm}")
+    # Stampa le soglie
+    thresholds.print_thresholds()
 
-    # Verifica i valori rispetto alle soglie di avviso
-    result_warning = check_values_against_thresholds(values, thresholds, 'warning')
-    print(f"Result (Warning): {result_warning}")
+    # Leggi la soglia di avviso alla posizione 2
+    warning_value_at_pos_2 = thresholds.get_warning_at(1)
+    warning_value_at_pos_2 = thresholds.warning_thresholds[0]
+    if warning_value_at_pos_2 is not None:
+        print(f"Warning value at position 2: {warning_value_at_pos_2:.2f}")
+    else:
+        print("La posizione specificata è fuori intervallo.")
 
+# END OF FILE
+#----------------------------------------------------------------------------------------------------------------
