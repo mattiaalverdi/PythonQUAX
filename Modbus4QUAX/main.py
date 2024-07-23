@@ -5,6 +5,18 @@ try:
     from pymodbus.client.sync import ModbusTcpClient
 except ModuleNotFoundError:
     from pymodbus.client import ModbusTcpClient
+    
+from telegram import Bot, Update
+from telegram.ext import ContextTypes
+import asyncio
+from QUAX_bot import sendStringToGroup
+
+# Funzione per gestire l'aggiornamento della pressione
+async def PressureUpdate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text("Hello, I'm QUAX_bot from MAIN! How can I help you?")  
+
+
+
 #----------------------------------------------------------------------------------------------------------------
 # MAIN QUAX
 if __name__ == "__main__":
@@ -35,5 +47,5 @@ if __name__ == "__main__":
     # Verifica i valori rispetto alle soglie dell'HDI
     result_hdi = check_values_against_thresholds(values, HDIThresholds)
     print(f"Result HDI: {result_hdi}")
-
+    asyncio.run(sendStringToGroup(f"Result HDI: {result_hdi}"))
 
