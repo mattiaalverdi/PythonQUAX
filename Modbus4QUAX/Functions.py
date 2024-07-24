@@ -147,7 +147,7 @@ def PumpDecode(pump_device):
     for pump in pump_device.header:
         outStr += f"{pump}'s PUMP:"   
         # START/OK/WARNING/ALARM
-        outStr += f"  {'ON' if pump_device.values[0+4*pumpIdx] else '💤OFF'}" + "\n"    
+        outStr += f"  {'🔵' if pump_device.values[0+4*pumpIdx] else '💤OFF'}" + "\n"    
         outStr += f"  {'🟢' if pump_device.values[1+4*pumpIdx] else '🟡'}"       
         outStr += f"  {'🟢' if pump_device.values[2+4*pumpIdx] else '🟡'}"
         outStr += f"  {'🟢' if pump_device.values[3+4*pumpIdx] else '🔴'}" + "\n"

@@ -1,4 +1,4 @@
-from QUAX_thresholds import PumpsThresholds, CCiThresholds, PMGThresholds, PSGThresholds, HDIThresholds
+from QUAX_thresholds import ThresholdsResults, PumpsThresholds, CCiThresholds, PMGThresholds, PSGThresholds, HDIThresholds, AlarmParser, WarningParser
 from thresholds_class import Thresholds, check_values_against_thresholds
 from Functions import ReadPLC, PumpDecode
 try:
@@ -54,7 +54,6 @@ def round_to_significant_figures(num, sig_figs):
     #     rounded_num = round(num, sig_figs - int(math.floor(math.log10(abs(num)))) - 1)
     #     return rounded_num
 
-
 #----------------------------------------------------------------------------------------------------------------
 # MAIN QUAX
 if __name__ == "__main__":
@@ -64,26 +63,27 @@ if __name__ == "__main__":
     # Crea il client Modbus
     QUAXPumps, QUAXCryoCon18i, QUAXPfeiffereMaxiGauge, QUAXPfeiffereSingleGauge, QUAXPHeliumDI = ReadPLC(host, port)
     QUAX_devices = [QUAXPumps, QUAXCryoCon18i, QUAXPfeiffereMaxiGauge, QUAXPfeiffereSingleGauge, QUAXPHeliumDI]
-    
+    QUAX_limits = [PumpsThresholds, CCiThresholds, PMGThresholds, PSGThresholds, HDIThresholds]
+
     #------------------------------------------------------------------------------------------------------------
     # Gestione Update periodici
 
-    UpdateMsg = "🟢 Periodical QUAX's Log\n of: " + current_time() + "\n\n"
+    # UpdateMsg = "🟢 Periodical QUAX's Log\n of: " + current_time() + "\n\n"
 
-    for device in QUAX_devices:
-        UpdateMsg += f"{device.name}:\n"
-        if device.name == QUAXPumps.name:
-            UpdateMsg += PumpDecode(device)
-        else:
-            for ch_or_gauge in range(len(device.header)):
-                if device.name == QUAXCryoCon18i.name:
-                    UpdateMsg += f"{device.header[ch_or_gauge]}: {device.values[ch_or_gauge]} {device.unit}\n"
-                else:                    
-                    UpdateMsg += f"{device.header[ch_or_gauge]}: {round_to_significant_figures(device.values[ch_or_gauge],4)} {device.unit}\n"
+    # for device in QUAX_devices:
+    #     UpdateMsg += f"{device.name}:\n"
+    #     if device.name == QUAXPumps.name:
+    #         UpdateMsg += PumpDecode(device)
+    #     else:
+    #         for ch_or_gauge in range(len(device.header)):
+    #             if device.name == QUAXCryoCon18i.name:
+    #                 UpdateMsg += f"{device.header[ch_or_gauge]}: {device.values[ch_or_gauge]} {device.unit}\n"
+    #             else:                    
+    #                 UpdateMsg += f"{device.header[ch_or_gauge]}: {round_to_significant_figures(device.values[ch_or_gauge],4)} {device.unit}\n"
 
-        UpdateMsg += "\n"     
+    #     UpdateMsg += "\n"     
 
-    send_message_sync(f"Result test🈳🉑♻: {UpdateMsg}")
+    # send_message_sync(f"Result test🈳🉑♻: {UpdateMsg}")
 
 
 
@@ -115,18 +115,19 @@ if __name__ == "__main__":
     # Gestione Warning
 
     WarningMsg = "🔔⚠ WARNING QUAX ⚠🔔\n Issue at: " + current_time() + "\n\n"
+    WarningResult = ThresholdsResults()
+    WarningResult.Pumps = check_values_against_thresholds(QUAXPumps.values, PumpsThresholds, 'warning')
+    WarningResult.CCi = check_values_against_thresholds(QUAXCryoCon18i.values, CCiThresholds, 'warning')
+    WarningResult.PMG = check_values_against_thresholds(QUAXPfeiffereMaxiGauge.values, PMGThresholds, 'warning')
+    WarningResult.PSG = check_values_against_thresholds(QUAXPfeiffereSingleGauge.values, PSGThresholds, 'warning')
+    WarningResult.HDI = check_values_against_thresholds(QUAXPHeliumDI.values, HDIThresholds, 'warning')
+                                               
+    for idx in range(len(WarningResult.Pumps)):
+        if WarningResult.Pumps[idx] == WarningParser.Pumps[idx]:
+            WarningMsg += "boja can un warning\n"
 
-    pumpsWarningResult = check_values_against_thresholds(QUAXPumps.values, PumpsThresholds, 'warning')
-    cciWarningResult = check_values_against_thresholds(QUAXCryoCon18i.values, CCiThresholds, 'warning')
-    pmgWarningResult = check_values_against_thresholds(QUAXPfeiffereMaxiGauge.values, PMGThresholds, 'warning')
-    psgWarningResult = check_values_against_thresholds(QUAXPfeiffereSingleGauge.values, PSGThresholds, 'warning')
-    hdiWarningResult = check_values_against_thresholds(QUAXPHeliumDI.values, HDIThresholds, 'warning')
-                                                 
-
-
-
-
-
-
+    send_message_sync(f"🎌TEST WARNING🎌: {WarningMsg}")
     #------------------------------------------------------------------------------------------------------------
     # Gestione Alarm
+    
+    AlarmMsg = "‼⚠ WARNING QUAX ⚠‼\n Issue at: " + current_time() + "\n\n"

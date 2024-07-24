@@ -122,7 +122,7 @@ def check_values_against_thresholds(values, thresholds, threshold_type='alarm'):
     except Exception as e:
         print(f"Errore: {e}")
         return 66
-    
+
 #----------------------------------------------------------------------------------------------------------------
 # TEST of the CLASS functionality
 if __name__ == "__main__":
