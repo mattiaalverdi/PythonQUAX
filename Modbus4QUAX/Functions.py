@@ -141,6 +141,23 @@ class QUAXDevice:
         self.unit = unit
         self.state = state
 
+def PumpDecode(pump_device):
+    pumpIdx = 0
+    outStr = ''
+    for pump in pump_device.header:
+        outStr += f"{pump}'s PUMP:"   
+        # START/OK/WARNING/ALARM
+        outStr += f"  {'ON' if pump_device.values[0+4*pumpIdx] else '💤OFF'}" + "\n"    
+        outStr += f"  {'🟢' if pump_device.values[1+4*pumpIdx] else '🟡'}"       
+        outStr += f"  {'🟢' if pump_device.values[2+4*pumpIdx] else '🟡'}"
+        outStr += f"  {'🟢' if pump_device.values[3+4*pumpIdx] else '🔴'}" + "\n"
+        
+        outStr += f"  {'' if pump_device.values[2+4*pumpIdx] else ' WARNING -'}"
+        outStr += f"  {'' if pump_device.values[3+4*pumpIdx] else 'ALARM'}"
+        outStr += "\n\n"
+        pumpIdx += 1
+    return outStr
+
 #----------------------------------------------------------------------------------------------------------------
 # MAIN CODE FOR READING REGISTERS AND DECODING VALUES
 def ReadPLC(host, port):
@@ -257,7 +274,7 @@ def ReadPLC(host, port):
 
         # Decodifica delle letture dei CH del CCi
         for idx, value in enumerate(CCi_channels):
-            CCiValues[idx] = check_and_reset_if_string(value) 
+            CCiValues[idx] = check_and_reset_if_string(round_to_significant_figures(value, 4)) 
         # salvataggio della classe                    
         QUAXCryoCon18i = QUAXDevice(time = current_time(),
                                 name = 'CryoCon18i',
@@ -292,7 +309,7 @@ def ReadPLC(host, port):
 
         # Decodifica delle letture dell'a HDI
         float_values = registers_to_float(HDI_read_rr.registers)
-        HDIValues = check_and_reset_if_string(round_to_significant_figures(float_values[0], 4))
+        HDIValues[0] = check_and_reset_if_string(round_to_significant_figures(float_values[0], 4))
         # salvataggio della classe                    
         QUAXPHeliumDI = QUAXDevice(time = current_time(),
                                 name = 'Helium Depth Indicator',
