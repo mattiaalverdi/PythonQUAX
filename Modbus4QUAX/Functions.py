@@ -88,18 +88,39 @@ def round_to_significant_figures(num, sig_figs):
     - sig_figs (int): Il numero di cifre significative.
 
     Returns:
-    - str: Il numero approssimato in notazione esponenziale.
+    - str: Il numero approssimato in notazione esponenziale
+    - float: Il numero approssimato a cifre significative.
     """
     if num == 0:
         return f"{0:.{sig_figs-1}e}"
+    # else:
+    #     # Calcola il numero di cifre decimali a cui arrotondare
+    #     rounded_num = round(num, sig_figs - int(math.floor(math.log10(abs(num)))) - 1)
+    #     # Format in notazione esponenziale
+    #     exp_format = f"{rounded_num:.{sig_figs-1}e}"
+    #     # Trasforma la notazione per essere nel formato x.yzw e^kk
+    #     base, exponent = exp_format.split('e')
+    #     return f"{base} e^{int(exponent)}"
     else:
         # Calcola il numero di cifre decimali a cui arrotondare
         rounded_num = round(num, sig_figs - int(math.floor(math.log10(abs(num)))) - 1)
-        # Format in notazione esponenziale
-        exp_format = f"{rounded_num:.{sig_figs-1}e}"
-        # Trasforma la notazione per essere nel formato x.yzw e^kk
-        base, exponent = exp_format.split('e')
-        return f"{base} e^{int(exponent)}"
+        return rounded_num
+
+# Funzione per verificare se una variabile è una stringa e, in caso affermativo, assegna il valore 0
+def check_and_reset_if_string(variable):
+    """
+    Verifica se la variabile è una stringa. Se vero, assegna il valore 0 alla variabile.
+
+    Args:
+    - variable: La variabile da verificare e potenzialmente modificare.
+
+    Returns:
+    - La variabile modificata se era una stringa, altrimenti la variabile originale.
+    """
+    if isinstance(variable, str):
+        variable = 0
+    return variable
+    
 
 # Funzione per ottenere l'ora corrente
 def current_time():
@@ -236,7 +257,7 @@ def ReadPLC(host, port):
 
         # Decodifica delle letture dei CH del CCi
         for idx, value in enumerate(CCi_channels):
-            CCiValues[idx] = value #round_to_significant_figures(value, 4)        
+            CCiValues[idx] = check_and_reset_if_string(value) 
         # salvataggio della classe                    
         QUAXCryoCon18i = QUAXDevice(time = current_time(),
                                 name = 'CryoCon18i',
@@ -248,7 +269,7 @@ def ReadPLC(host, port):
         # Decodifica delle letture delle gauges della PMG
         float_values = registers_to_float(PMG_gauges_rr.registers)
         for i in range(6):
-           PMGValues[i] = round_to_significant_figures(float_values[i], 4)  
+           PMGValues[i] = check_and_reset_if_string(round_to_significant_figures(float_values[i], 4))  
         # salvataggio della classe                    
         QUAXPfeiffereMaxiGauge = QUAXDevice(time = current_time(),
                                 name = 'Pfeiffer MaxiGauge',
@@ -260,9 +281,9 @@ def ReadPLC(host, port):
         # Decodifica delle letture delle gauges della PSG
         float_values = registers_to_float(PSG_gauges_rr.registers)
         for i in range(2):
-            PSGValues[i] = round_to_significant_figures(float_values[i], 4)  
+            PSGValues[i] = check_and_reset_if_string(round_to_significant_figures(float_values[i], 4))  
         # salvataggio della classe                    
-        QUAXPfeiffereMaxiGauge = QUAXDevice(time = current_time(),
+        QUAXPfeiffereSingleGauge = QUAXDevice(time = current_time(),
                                 name = 'Pfeiffer SingleGauge',
                                 header = PSGHeader, 
                                 values = PSGValues,
@@ -271,7 +292,7 @@ def ReadPLC(host, port):
 
         # Decodifica delle letture dell'a HDI
         float_values = registers_to_float(HDI_read_rr.registers)
-        HDIValues = round_to_significant_figures(float_values[0], 4)
+        HDIValues = check_and_reset_if_string(round_to_significant_figures(float_values[0], 4))
         # salvataggio della classe                    
         QUAXPHeliumDI = QUAXDevice(time = current_time(),
                                 name = 'Helium Depth Indicator',
@@ -284,7 +305,7 @@ def ReadPLC(host, port):
         # Chiude la connessione
         client.close()
 
-    return QUAXPumps, QUAXCryoCon18i, QUAXPfeiffereMaxiGauge, QUAXPfeiffereMaxiGauge, QUAXPHeliumDI
+    return QUAXPumps, QUAXCryoCon18i, QUAXPfeiffereMaxiGauge, QUAXPfeiffereSingleGauge, QUAXPHeliumDI
         
 
 #----------------------------------------------------------------------------------------------------------------
@@ -298,10 +319,12 @@ if __name__ == "__main__":
 
     # Crea il client Modbus
     client = ModbusTcpClient(host, port)
-    QUAXPumps, QUAXCryoCon18i, QUAXPfeiffereMaxiGauge, QUAXPfeiffereMaxiGauge, QUAXPHeliumDI = ReadPLC(host, port)
-
-    print(QUAXPumps.time)
-    print(QUAXPumps.header)
-    print(QUAXPumps.values)
-    print(QUAXPumps.unit)
-    print(QUAXPumps.state)
+    QUAXPumps, QUAXCryoCon18i, QUAXPfeiffereMaxiGauge, QUAXPfeiffereSingleGauge, QUAXPHeliumDI = ReadPLC(host, port)
+    results = [QUAXPumps, QUAXCryoCon18i, QUAXPfeiffereMaxiGauge,
+                QUAXPfeiffereSingleGauge, QUAXPHeliumDI]
+    for result in results:
+        print(result.time)
+        print(result.header)
+        print(result.values)
+        print(result.unit)
+        print(result.state)

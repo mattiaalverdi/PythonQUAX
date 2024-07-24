@@ -1,7 +1,7 @@
 from telegram import Bot, Update
 from telegram.ext import Application, CommandHandler, MessageHandler, ContextTypes, Updater
 import logging
-from main import PressureUpdate
+# from main import PressureUpdate
 
 # Configura il logging
 logging.basicConfig(
@@ -31,7 +31,7 @@ def QUAX_bot() -> None:
 
     application.add_handler(CommandHandler(command="start", callback=start))
     
-    application.add_handler(CommandHandler(command="bat", callback=PressureUpdate))
+    # application.add_handler(CommandHandler(command="bat", callback=PressureUpdate))
 
     application.run_polling()
 

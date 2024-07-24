@@ -24,28 +24,31 @@ if __name__ == "__main__":
     port = 503
 
     # Crea il client Modbus
-    # QUAXPumps, QUAXCryoCon18i, QUAXPfeiffereMaxiGauge, QUAXPfeiffereMaxiGauge, QUAXPHeliumDI = ReadPLC(host, port)
+    QUAXPumps, QUAXCryoCon18i, QUAXPfeiffereMaxiGauge, QUAXPfeiffereSingleGauge, QUAXPHeliumDI = ReadPLC(host, port)
 
-    values = [15]
+    # values = [15]
     
-    # Verifica i valori rispetto alle soglie delle pompe
-    # result_pumps = check_values_against_thresholds(values, PumpsThresholds)
+    # # Verifica i valori rispetto alle soglie delle pompe
+    # result_pumps = check_values_against_thresholds(QUAXPumps.values, PumpsThresholds, 'warning')
     # print(f"Result Pumps: {result_pumps}")
+    # asyncio.run(sendStringToGroup(f"Result pompe: {result_pumps}"))
     
-    # Verifica i valori rispetto alle soglie dei CCi
-    # result_cci = check_values_against_thresholds(values, CCiThresholds)
+    # # Verifica i valori rispetto alle soglie dei CCi
+    # result_cci = check_values_against_thresholds(QUAXCryoCon18i.values, CCiThresholds, 'warning')
     # print(f"Result CCi: {result_cci}")
+    # asyncio.run(sendStringToGroup(f"Result CCi: {result_cci}"))
     
-    # # Verifica i valori rispetto alle soglie delle PMG
-    # result_pmg = check_values_against_thresholds(values, PMGThresholds)
+    # # Verifica i valori rispetto alle soglie delle 
+    # result_pmg = check_values_against_thresholds(QUAXPfeiffereMaxiGauge.values, PMGThresholds, 'warning')
     # print(f"Result PMG: {result_pmg}")
+    # asyncio.run(sendStringToGroup(f"Result PMG: {result_pmg}"))
     
     # # Verifica i valori rispetto alle soglie delle PSG
-    # result_psg = check_values_against_thresholds(values, PSGThresholds)
-    # print(f"Result PSG: {result_psg}")
+    # result_psg = check_values_against_thresholds(QUAXPfeiffereSingleGauge.values, PSGThresholds, 'warning')
+    # print(f"Result PSG: {result_psg}")    # asyncio.run(sendStringToGroup(f"Result PSG: {result_psg}"))
     
-    # Verifica i valori rispetto alle soglie dell'HDI
-    result_hdi = check_values_against_thresholds(values, HDIThresholds)
-    print(f"Result HDI: {result_hdi}")
-    asyncio.run(sendStringToGroup(f"Result HDI: {result_hdi}"))
+    # # Verifica i valori rispetto alle soglie dell'HDI
+    # result_hdi = check_values_against_thresholds(QUAXPHeliumDI.values, HDIThresholds, 'warning')
+    # print(f"Result HDI: {result_hdi}")
+    # asyncio.run(sendStringToGroup(f"Result HDI: {result_hdi}"))
 
